@@ -30,7 +30,9 @@ window.onload = function() {
     }
     // Appends all children to where they should be in the DOM
     navbar.appendChild(navList);
-    body.replaceChild(navbar, oldNavbar);
+    if (oldNavbar){
+        body.replaceChild(navbar, oldNavbar);
+    }
     row.appendChild(content);
     row.appendChild(tableOfContents);
     container.appendChild(row);
