@@ -10,6 +10,9 @@ window.onload = function() {
     var navbar = document.createElement("nav");
     var navList = document.createElement("ul");
     var navItems = document.querySelectorAll("#org-div-home-and-up a");
+    var tables = document.querySelectorAll("table");
+    var source = document.querySelectorAll(".org-src-container");
+    var sourcePre = document.querySelectorAll(".org-src-container pre");
     // Set classnames
     container.className = "container";
     row.className = "row";
@@ -17,6 +20,21 @@ window.onload = function() {
     tableOfContents.className = "col-md-5";
     navList.className = "navbar-nav mr-auto d-none d-sm-flex";
     content.className = "col-md-7";
+    for (var i = 0; i < tables.length; i++){
+        var item = tables.item(i);
+        item.className = "table table-sm table-hover";
+        item.removeAttribute("border");
+        item.removeAttribute("cellspacing");
+        item.removeAttribute("cellpadding");
+        item.removeAttribute("frame");
+        item.removeAttribute("rules");
+    }
+    for (var i = 0; i < source.length; i++){
+        source.item(i).className = "highlight";
+    }
+    for (var i = 0; i < sourcePre.length; i++){
+        sourcePre.item(i).className = "";
+    }
     //Set the navlist inline style
     navList.style = "list-style:none;padding-left: 1rem;";
     // Add all items to the navlist
