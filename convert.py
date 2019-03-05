@@ -14,6 +14,9 @@ def convert(path):
     tables = d("table")
     source = d(".org-src-container")
     source_pre = d(".org-src-container pre")
+    title = d(".title")
+    new_title = pq("<h2 class=\"title\">"+title.text()+"</h2>")
+    title.replace_with(new_title)
     toc.addClass("col-md-5")
     content.addClass("col-md-7")
     for item in tables:
