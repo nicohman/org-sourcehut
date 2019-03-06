@@ -38,13 +38,14 @@ def convert(path, links=None, show_up_link=True):
         link.addClass("nav-link")
         if link.text() != "UP" or show_up_link:
             nav_list.append(new_item)
-    for link in links:
-        link = pq("<li class=\"nav-item\"><a class=\"nav-link\" href=\""+link['href']+"\">"+link['text']+"</a></li>")
-        nav_list.append(link)
+    if links:
+        for link in links:
+            link = pq("<li class=\"nav-item\"><a class=\"nav-link\" href=\""+link['href']+"\">"+link['text']+"</a></li>")
+            nav_list.append(link)
     navbar.append(nav_list)
     if old_navbar: 
         old_navbar.replace_with(navbar)
-    elif navbar.children().length() > 0:
+    elif navbar.children().length > 0:
         body.append(navbar)
     row.append(content)
     row.append(toc)
