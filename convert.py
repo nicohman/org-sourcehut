@@ -1,3 +1,9 @@
+# This script is effectively a port of the javascript also in this repository.
+# This should, however, be used for sites that are going to change infrequently
+# and be served to the public, where formatting should be done on the server.
+# An example `format all HTML files in directory` function is included. This
+# script also supports the addition of extra links to the header bar, and
+# hiding the up link. There is also an example function to export all the html files in a given directory.
 from pyquery import PyQuery as pq
 import os
 def convert(path, links=None, show_up_link=True):
@@ -54,3 +60,9 @@ def convert(path, links=None, show_up_link=True):
     output = open(path, "w")
     output.write(d.outer_html())
     output.close()
+def is_html(name):
+    return ".html" in name
+def export_all(folder_path, links=None, show_up_link=True):
+    for root, dirs, files in os.walk(folder_path):
+        for file in filter(is_html, files):
+            convert(os.path.join(root, file), links=links, show_up_link=show_up_link)
